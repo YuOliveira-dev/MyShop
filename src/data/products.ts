@@ -1,3 +1,5 @@
+// Utilizando esse arquivo eu posso guardar as informações para utilizar depois, não é a melhor forma, mas por enquanto vou deixar assim.
+// Cria uma interface para definir todas as propriedades nos produtos, como imagem, preço, descrição e etc..
 export interface Product {
     id: number;
     title: string;

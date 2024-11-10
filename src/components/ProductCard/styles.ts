@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// Define os estilos de cada Card do produto
 export const Card = styled.article`
     background-color: white;
     width: 100%;
@@ -12,7 +13,7 @@ export const Card = styled.article`
     flex-direction: column;
     align-items: center;
 `;
-
+// Define os estilos da imagem do produto
 export const ProductImage = styled.img`
     width: 250px;
     height: 400px;
@@ -20,7 +21,7 @@ export const ProductImage = styled.img`
     object-fit: contain;
 
 `;
-
+// Define o estilo do titulo do produto
 export const ProductTitle = styled.h2`
     font-weight: 500;
     font-size: 1.2rem;
@@ -32,6 +33,7 @@ export const ProductTitle = styled.h2`
     
 `;
 
+// Define os estilos do container de produto
 export const ReviwePriceContainer = styled.div`
     display: flex;
     justify-content: space-between;
@@ -40,6 +42,7 @@ export const ReviwePriceContainer = styled.div`
     margin-top: 1rem;
 `;
 
+// Define os estilos do Review de cada produto
 export const Review = styled.span`
     display: flex;
     align-items:center;
@@ -47,9 +50,10 @@ export const Review = styled.span`
 
     font-size: 0.8rem
 `;
-
+ // Define os estilos do preço do produto
 export const Price = styled.strong``;
 
+// Define os estilos do container que envolve o botão de carrinho
 export const AddToCartButtonWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -57,7 +61,7 @@ export const AddToCartButtonWrapper = styled.div`
     width: 100%;
     margin-top: 1rem;
 `;
-
+// Define os estilos do botão de adicionar ao carrinho
 export const AddToCartButton = styled.button`
     border: none;
     border-radius: 5px;
@@ -71,6 +75,7 @@ export const AddToCartButton = styled.button`
     justify-content: center;
     gap: 0.3rem;
 
+    // Define o tamanho do icone de carrinho
     svg{
         font-size: 0.9rem;
     }`;

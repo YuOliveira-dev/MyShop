@@ -1,8 +1,9 @@
 import { FiShoppingCart } from "react-icons/fi";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import * as S from "./styles";
 import { Product } from "../../data/products";
 
+import * as S from "./styles";
+// Cria uma interface para definir as propriedades dinâmicas de cada produto
 interface ProductCardProps {
   product: Product;
 }

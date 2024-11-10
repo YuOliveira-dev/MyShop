@@ -5,7 +5,7 @@ import { ProductsList } from "./components/ProductsList/ProductsList";
 
 
 
-// componente funcional do React
+// Esse é o componente que guarda todos os outros componentes e renderiza na tela.
 function App() {
   return (
     <>
