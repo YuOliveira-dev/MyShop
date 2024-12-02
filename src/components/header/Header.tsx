@@ -1,15 +1,44 @@
 import { useState } from "react";
 import { Cart } from "../Cart/Cart";
 import { FiLogIn, FiLogOut, FiShoppingCart } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux"
+import { RootReducer } from "../../redux/root-reducer";
 
 import * as S from "./styles";
 
 
 export const Header: React.FC = () => {
+ const {user} = useSelector(
+  (rootReducer: RootReducer) => rootReducer.userReducer );
+  const dispatch = useDispatch()
+
+ 
+
+
   // Adiciona o estado do carrinho e uma constante para alterar se o carrinho aparece ou some.
   const [showCart, setShowCart] = useState(false)
   // constante para guardar o valor se o usuário está logado ou não
-  const isLogged = false;
+  const isLogged = user !== null;
+  
+  // Função para pegar o evento de clique do usuário
+  function handleUserAuth(e: React.MouseEvent<HTMLButtonElement>) {
+    if (user === null) {
+      //despachar a action de login
+      dispatch({
+        type: "user/login",
+        payload: {
+          name: "Yuri Carvalho",
+          email: 'carvalhoyc@hotmail.com'
+        }
+      });
+
+    }else { 
+      dispatch( {
+        type: "user/logout",
+      })
+    }
+
+  }
 
   return (
     <S.StyledHeader>
@@ -17,7 +46,7 @@ export const Header: React.FC = () => {
         <S.HeaderTitle>MyShop</S.HeaderTitle> {/* Titulo no Header */}
 
         <S.buttonsWrapper>
-          <S.AythButton isLogged={isLogged}>
+          <S.AythButton isLogged = {isLogged} onClick={handleUserAuth}>
             {/* Caso o usuário esteja logado, exibe "Logout", do contrário, login com seus estilos respectivos */}
             {isLogged ? "Logout" : "Login"}
             {isLogged ? <FiLogIn /> : <FiLogOut />}
