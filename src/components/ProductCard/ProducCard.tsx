@@ -3,13 +3,23 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Product } from "../../data/products";
 
 import * as S from "./styles";
+import { useDispatch } from "react-redux";
 // Cria uma interface para definir as propriedades dinâmicas de cada produto
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  return (
+  const dispatch = useDispatch()
+  function handleAddProductToCart () {
+    //Despachando a action de adicionar o produto ao carrinho
+    dispatch({
+      type: 'cart/add-product',
+      payload: product,
+    })
+
+  }
+    return (
     <S.Card>
       {/* Adicionando dinamismo através da tabela de produtos */}
       <S.ProductImage src={product.image} alt={product.description} />
@@ -32,7 +42,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {/* Container para envolver o botão */}
       <S.AddToCartButtonWrapper>
         {/* Botão para adicionar ao carrinho */}
-        <S.AddToCartButton>
+        <S.AddToCartButton onClick={handleAddProductToCart}>
           Adicionar ao carrinho
           <FiShoppingCart />
         </S.AddToCartButton>
