@@ -3,14 +3,28 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Product } from "../../data/products";
 
 import * as S from "./styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootReducer, rootReducer } from "../../redux/root-reducer";
 // Cria uma interface para definir as propriedades dinâmicas de cada produto
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const dispatch = useDispatch()
+  //pega os itens no carrinho usando useSelector através do root que contém os objetos dentro do carrinho
+  const { cart } = useSelector((rootReducer: RootReducer)=> rootReducer.cartReducer)
+  const dispatch = useDispatch();
+
+    // procura um produto que seja idêntico ao produto que está dentro do carrinho, caso encontre, ele retorna o produto que encontrou, se não encontrar, ele retorna undefined
+  const isProductOnCart = cart.find((productOnCart) => product.id === productOnCart.id ) !== undefined
+  
+  function handleRemoveProductFromCart () {
+    dispatch({
+      type: 'cart/remove-product',
+      payload: product,
+    })
+  }
+
   function handleAddProductToCart () {
     //Despachando a action de adicionar o produto ao carrinho
     dispatch({
@@ -41,11 +55,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </S.ReviwePriceContainer>
       {/* Container para envolver o botão */}
       <S.AddToCartButtonWrapper>
-        {/* Botão para adicionar ao carrinho */}
+        {isProductOnCart ? (
+          <S.RemoveFromCartBottom onClick={handleRemoveProductFromCart}>
+          Remover do carrinho
+          <FiShoppingCart />
+        </S.RemoveFromCartBottom>
+        ) :  
+        
         <S.AddToCartButton onClick={handleAddProductToCart}>
           Adicionar ao carrinho
           <FiShoppingCart />
         </S.AddToCartButton>
+        }
+       
+      
+        
+        
       </S.AddToCartButtonWrapper>
     </S.Card>
   );
