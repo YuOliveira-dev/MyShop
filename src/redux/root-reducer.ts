@@ -1,13 +1,11 @@
 import { combineReducers } from "redux";
-import { userReducer } from "./User/reducer";
-import { cartReducer } from "./Cart/cart-reducer";
+import { userSlice } from "./User/use-slice";
+import { cartSlice } from "./Cart/cart-slice";
 
 //Importa os reducers da aplicação, e usando o combineReducers, combina todos eles em um só lugar.
 export const rootReducer = combineReducers({
-    userReducer,
-    cartReducer,
-
+  userReducer: userSlice.reducer,
+  cartReducer: cartSlice.reducer,
 });
-
 
 export type RootReducer = ReturnType<typeof rootReducer>;

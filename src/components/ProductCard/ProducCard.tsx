@@ -4,7 +4,8 @@ import { Product } from "../../data/products";
 
 import * as S from "./styles";
 import { useDispatch, useSelector } from "react-redux";
-import { RootReducer, rootReducer } from "../../redux/root-reducer";
+import { RootReducer} from "../../redux/root-reducer";
+import { addProduct, removeProduct } from "../../redux/Cart/cart-slice";
 // Cria uma interface para definir as propriedades dinâmicas de cada produto
 interface ProductCardProps {
   product: Product;
@@ -19,18 +20,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isProductOnCart = cart.find((productOnCart) => product.id === productOnCart.id ) !== undefined
   
   function handleRemoveProductFromCart () {
-    dispatch({
-      type: 'cart/remove-product',
-      payload: product,
-    })
+    dispatch(removeProduct(product));
   }
 
   function handleAddProductToCart () {
     //Despachando a action de adicionar o produto ao carrinho
-    dispatch({
-      type: 'cart/add-product',
-      payload: product,
-    })
+    dispatch(addProduct(product));
 
   }
     return (

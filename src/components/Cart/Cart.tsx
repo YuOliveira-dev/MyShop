@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import * as S from "./styles";
 import { RootReducer } from "../../redux/root-reducer";
 
+import * as S from "./styles";
 // Cria uma interface para as propriedades do carrinho ( true or false / Mostra ou esconde)
 interface CartProps {
   showCart: boolean;
