@@ -11,6 +11,8 @@ export const Header: React.FC = () => {
   const { user } = useSelector(
     (rootReducer: RootReducer) => rootReducer.userReducer
   );
+  const { cart } = useSelector((rootReducer: RootReducer)=> rootReducer.cartReducer );
+  
   const dispatch = useDispatch();
 
   // Adiciona o estado do carrinho e uma constante para alterar se o carrinho aparece ou some.
@@ -51,7 +53,7 @@ export const Header: React.FC = () => {
         </S.buttonsWrapper>
       </S.Wrapper>
 
-      <Cart showCart={showCart} />
+      <Cart showCart={showCart} cart={cart} />
     </S.StyledHeader>
   );
 };

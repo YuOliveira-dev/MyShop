@@ -6,6 +6,7 @@ interface ContainerProps {
 }
 // Utiliza as propriedades criadas anteriormente para adicionar dinamismo ao componente, no caso mostrar ou esconder o elemento.
 export const Container = styled.aside<ContainerProps>`
+
   position: fixed;
   top: 0;
   /* Abaixo utilizando a lógica ( Se showCart é false, ao clicar no botão, mostre o elemento, do contrário, esconda ) */
