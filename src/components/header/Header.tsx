@@ -22,6 +22,7 @@ export const Header: React.FC = () => {
 
   // Função para pegar o evento de clique do usuário
   function handleUserAuth(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
     if (user === null) {
       //despachar a action de login
       dispatch(

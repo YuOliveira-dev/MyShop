@@ -15,6 +15,7 @@ export const Container = styled.aside<ContainerProps>`
   width: 300px;
   height: 100vh;
   background-color: white;
+  z-index: 1000;
 
   padding: 2rem;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.25);
