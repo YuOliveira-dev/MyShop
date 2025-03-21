@@ -46,7 +46,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           )}
           {product.rating.rate}
         </S.Review>
-        <S.Price>{product.price}</S.Price>
+        <S.Price>${product.price}</S.Price>
       </S.ReviwePriceContainer>
       {/* Container para envolver o botão */}
       <S.AddToCartButtonWrapper>
